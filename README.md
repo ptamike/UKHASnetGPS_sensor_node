@@ -1,17 +1,22 @@
 Arduino GPS Sensor Node
 =========
 
-This is an adaptation of the UKHASnet sensor code to allow the connection of a GPS module to update the LOCATION_STRING variable and so broadcast the node's location during a survey.
+**Purpose**
+
+This is an adaptation of the UKHASnet sensor code to allow the connection of a GPS module to update the LOCATION_STRING variable and so broadcast the node's location. This is intended to aid RF path surveys as the GPS node could be installed in a car which is then driven around the survey area. Analysis of the UKHASnet database would show all the locations where the survey vehicle was able to contact another node.
 
 **Hardware**
-The connected GPS can be any unit that streams standard NMEA words. The default baud rate of the GPS mus be set in **GPSBaud**. The serial connection is via Arduino pins 3 and 4 using SoftwareSerial.
+
+The connected GPS can be any unit that streams standard NMEA words. The default baud rate of the GPS must be set in **GPSBaud**. The serial connection is via Arduino pins 3 and 4 using SoftwareSerial.
 
 **Code Changes**
+
 All code changes are annotated by +++ to make them easy to find. Two additional libraries are required as follows: **tinyGPS++** parses the GPS NMEA output and allows extraction of lat and lon.
 **SoftwareSerial** provides an additional serial port to handle the GPS output. Two new functions have been added: **gpsLocate()** fetches the lat/lon coordinates and updates LOCATION_STRING.
 **smartDelay(ms)** refreshes the GPS coordinates.
 
 **Portability**
+
 Although originally tested on Moteino boards, the code should work on any Arduino based HASnet node providing the correct board is selected in the IDE.
 
 **The original notes for the sensor node follow:**
